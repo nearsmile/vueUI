@@ -1,7 +1,4 @@
-// https://eslint.org/docs/user-guide/configuring
-const allow = 0;
-const warn = 1;
-const error = 2;
+// http://eslint.org/docs/user-guide/configuring
 
 module.exports = {
   root: true,
@@ -12,8 +9,11 @@ module.exports = {
   env: {
     browser: true,
   },
-  // https://github.com/standard/standard/blob/master/docs/RULES-en.md
-  extends: 'standard',
+  // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
+  extends: [
+    'standard',
+    './vpclub/components/eslint/index.js'
+  ],
   // required to lint *.vue files
   plugins: [
     'html'
@@ -21,14 +21,10 @@ module.exports = {
   // add your custom rules here
   'rules': {
     // allow paren-less arrow functions
-    'arrow-parens': allow,
+    'arrow-parens': 0,
     // allow async-await
-    'generator-star-spacing': allow,
+    'generator-star-spacing': 0,
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? error : allow,
-    'semi': allow,
-    // 最佳实践
-    'no-compare-neg-zero': error, // 禁止与 -0 进行比较
-
+    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
   }
 }

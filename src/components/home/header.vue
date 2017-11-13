@@ -59,7 +59,7 @@
   content: '';
   position: absolute;
   left: 15%;
-  top: calc(50% - 0.09rem);
+  top: calc(50% - 0.08rem);
   width: .16rem;
   height: .16rem;
   border: solid #c7c7c7;

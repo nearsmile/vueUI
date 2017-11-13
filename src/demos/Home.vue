@@ -38,8 +38,8 @@
 
   &-item {
     width: 33.333%;
-    height: 1.2rem;
-    line-height: 1.2rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
     /* height: 100%; */
     font-size: .24rem;
     border: solid #c7c7c7;
