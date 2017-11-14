@@ -1,8 +1,4 @@
-/**
- * Created by louizhai on 17/6/30.
- * description: Use canvas to draw.
- */
-// /* eslint-disable */
+
 function Draw(canvas, degree, config = {}) {
   if (!(this instanceof Draw)) {
     return new Draw(canvas, config);

@@ -10,10 +10,7 @@ module.exports = {
     browser: true,
   },
   // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
-  extends: [
-    'standard',
-    './vpclub/components/eslint/index.js'
-  ],
+  extends: './vpclub/components/eslint/index.js',
   // required to lint *.vue files
   plugins: [
     'html'
