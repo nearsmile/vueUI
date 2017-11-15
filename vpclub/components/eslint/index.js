@@ -27,12 +27,15 @@ module.exports = {
   },
   root: true, // 以当前目录为根目录，不再向上查找 .eslintrc.js
   rules: {
+
     /**
      * Possible Errors 可能的错误
      * ESLint官方推荐，这些规则与 JavaScript 代码中可能的语法错误或逻辑错误有关
      */
+
     // 禁止 for 循环出现方向错误的循环，比如 for (i = 0; i < 10; i--)
     // "for-direction": "error", // "^4.0"
+
     // 禁止将 await 写在循环里，因为这样就无法同时发送多个异步请求
     // @off 要求太严格了，有时需要在循环中写 await
     "no-await-in-loop": "off",
@@ -130,5 +133,79 @@ module.exports = {
      * Best Practices 最佳实践
      * 这些规则通过一些最佳实践帮助你避免问题
      */
+
+    // 有 setter 的地方必须有 getter，有 getter 的地方可以没有 setter
+    "accessor-pairs": [
+      "error",
+      {
+        "setWithoutGet": true,
+        "getWithoutSet": false
+      }
+    ],
+    // 数组的一些方法（map, reduce 等）的回调函数中，必须有返回值
+    // @off 太严格
+    "array-callback-return": "off",
+    // 将 var 定义的变量视为块作用域，禁止在块外使用
+    "block-scoped-var": "error",
+    // 在类的非静态方法中，必须存在对 this 的引用
+    // @off 太严格
+    "class-methods-use-this": "error",
+    // 禁止函数的循环复杂度超过 20
+    "complexity": [
+      "error",
+      {
+        max: 20
+      }
+    ],
+    // 禁止函数在不同分支返回不同类型的值
+    // @off 太严格
+    "consistent-return": "off",
+    // @fixable if 后面必须要有 {，除非是单行 if
+    "curly": [
+      "error",
+      "multi-line",
+      "consistent"
+    ],
+    // switch 语句必须有 default
+    // @off 太严格
+    "default-case": "off",
+    // @fixable 链式调用的时候，点号必须放在第二行开头处，禁止放在第一行结尾处
+    "dot-location": [
+      "error",
+      "property"
+    ],
+    // @fixable 必须使用 === 或 !==，禁止使用 == 或 !=，与 null 比较时除外
+    "eqeqeq": [
+      "error",
+      "always",
+      {
+        "null": "ignore"
+      }
+    ],
+    // for in 内部必须有 hasOwnProperty
+    "guard-for-in": "error",
+    // 禁止使用 alert
+    // @off alert 很常用
+    "no-alert": "off",
+    // 禁止使用 caller 或 callee
+    "no-caller": "error",
+    // switch 的 case 内有变量定义的时候，必须使用大括号将 case 内变成一个代码块
+    "no-case-declarations": "error",
+    // 禁止在正则表达式中出现没必要的转义符
+    // @off 多于的转义符没有害处，反而还可以使代码更易懂
+    "no-div-regex": "off",
+    // @fixable 禁止在 else 内使用 return，必须改为提前结束
+    // @off else 中使用 return 可以使代码结构更清晰
+    "no-else-return": "off",
+    // 不允许有空函数，除非是将一个空函数设置为某个项的默认值
+    "no-empty-function": [
+      "error",
+      {
+        allow: [
+          "functions",
+          "arrowFunctions"
+        ]
+      }
+    ]
   }
 }
