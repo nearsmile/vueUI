@@ -2,12 +2,14 @@
   <div class="autograph">
     <div id="canvasBox" :style="getHorizontalStyle">
       <div class="setting">
-        <span>{{msg}}</span>
-        <button @touchstart="clear" @mousedown="clear">清屏</button>
+        <span class="title">{{ msg }}</span>
+        <button class="btn-clear" @touchstart="clear" @mousedown="clear">清屏</button>
         <button @touchstart="download" @mousedown="download">下载</button>
-        <select v-model="degree">
-          <option v-for="item in scope" :value="item.value">{{item.title}}</option>
-        </select>
+        <ul>
+          <li class="list-item" v-for="(item, index) in scope" :key="index" @click="degree = item.value">
+            {{ item.title }}
+          </li>
+        </ul>
       </div>
       <canvas></canvas>
     </div>
@@ -21,8 +23,8 @@ export default {
   name: 'canvas',
   data() {
     return {
-      msg: 'Just use canvas to draw',
-      degree: 90, // 屏幕整体旋转的角度, 可取 -90,90,180等值
+      msg: '手写签名组件',
+      degree: 0, // 屏幕整体旋转的角度, 可取 -90,90,180等值
       scope: [
         {
           value: 0,
@@ -30,15 +32,15 @@ export default {
         },
         {
           value: 90,
-          title: '顺时针旋转90°'
+          title: '左旋'
         },
         {
           value: 180,
-          title: '顺时针旋转180°'
+          title: '倒置'
         },
         {
           value: -90,
-          title: '逆时针旋转90°'
+          title: '右旋'
         }
       ]
     };
@@ -130,16 +132,37 @@ export default {
   height: 100%;
 }
 .setting {
-  padding: 20px;
-  font-size: 20px;
-  user-select: none;
-}
-.setting select {
+  background-color: #f5f5f5;
   font-size: 18px;
 }
+
+.title {
+  padding: 0 5%;
+  font-size: 20px;
+}
+
+.setting button {
+  float: right;
+  width: 25%;
+  font-size: 18px;
+}
+
+.btn-clear {
+  color: #fff;
+  background-color: rgb(112, 22, 22);
+}
+
 canvas {
   flex: 1;
   cursor: crosshair;
-  border: 1px dashed #ddd;
+  border: 1px dashed rgb(184, 144, 144);
 }
+
+.list-item {
+  float: left;
+  width: 25%;
+  padding: 2%;
+  text-align: center;
+}
+
 </style>

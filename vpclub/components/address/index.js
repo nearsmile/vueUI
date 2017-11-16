@@ -1,11 +1,7 @@
-import AddressPicker from './address.vue'
+import Address from './address.vue'
 
-const install = function (Vue, opts = {}) {
-  if (install.installed) return
-
-  Vue.component(AddressPicker.name, AddressPicker)
-}
-
-export {
-  install
+export default {
+  install (Vue) {
+    Vue.component(Address.name, Address)
+  }
 }
